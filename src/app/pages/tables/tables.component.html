@@ -1,0 +1,200 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+      <!-- Card stats -->
+    </div>
+  </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--7" id="main-container">
+  <!-- Table -->
+  <div class="row">
+    <div class="col">
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <a (click)="onOpenModal(null, 'add')" class="btn btn-info test">Add User</a>
+          <h3 class="mb-0">Users List</h3>
+        </div>
+        <div class="table-responsive">
+          <table class="table align-items-center table-flush">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">Company</th>
+                <th scope="col">Adress</th>
+                <th scope="col">Email</th>
+                <th scope="col">Inivtation Date</th>
+                <th scope="col">Phone number</th>
+                <th scope="col">Invitation Status</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Company -->
+              <tr *ngFor="let user of users">
+                <th scope="row">
+                  <div class="media align-items-center">
+                    <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
+                      <img alt="Image placeholder" src="../assets/img/theme/angular.jpg">
+                    </a>
+                    <div class="media-body">
+                      <span class="mb-0 text-sm">{{user.firstName}} {{user.lastName}}</span>
+                    </div>
+                  </div>
+                </th>
+                <td>
+                  {{user.adress}}
+                </td>
+                <td>
+                  {{user.email}}
+                </td>
+                <td>
+                  {{user.invitationDate}}
+                </td>
+                <td>
+                  {{user.phoneNumber}}
+                </td>
+                <td>
+                  <span *ngIf="user.invitationStatus=='BEING_PROCESSED'" class="badge badge-dot mr-4">
+                    <i class="bg-warning"></i> {{user.invitationStatus}}
+                  </span>
+                  <span *ngIf="user.invitationStatus=='VALID'" class="badge badge-dot">
+                    <i class="bg-success"></i> {{user.invitationStatus}}
+                  </span>
+                </td>
+                <td class="text-right">
+                  <div ngbDropdown placement="bottom-right">
+                    <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
+                      <i class="fas fa-ellipsis-v"></i>
+                    </a>
+                    <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
+                      <a (click)="onOpenModal(user, 'edit')" class="dropdown-item" href="javascript:void(0)" data-original-title="Edit">Edit</a>
+                      <a (click)="onOpenModal(user, 'delete')" class="dropdown-item" href="javascript:void(0)" data-original-title="Delete">Delete</a>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Edit Modal -->
+<div class="modal fade" id="updateUserModal" tabindex="-1" role="dialog" aria-labelledby="updateUserModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+       <div class="modal-header">
+          <h5 class="modal-title" id="updateUserModalLabel">Edit User</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          </button>
+       </div>
+       <div class="modal-body">
+        <form #editForm="ngForm">
+          <div class="form-group">
+             <label for="firstName">Name</label>
+             <input type="text" ngModel="{{editUser?.firstName}}" name="firstName" class="form-control" id="firstName" placeholder="First Name">
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" ngModel="{{editUser?.lastName}}" name="lastName" class="form-control" id="lastName" placeholder="Last Name">
+         </div>
+          <input type="hidden" ngModel="{{editUser?.id}}" name="id" class="form-control" id="id" placeholder="User ID">
+          <div class="form-group">
+             <label for="email">Email Address</label>
+             <input type="email" ngModel="{{editUser?.email}}" name="email" class="form-control" id="email" placeholder="Email">
+          </div>
+          <div class="form-group">
+            <label for="invitationDate">Invitation Date</label>
+            <input type="date" ngModel="{{editUser?.invitationDate}}" name="invitationDate" class="form-control" id="invitationDate" placeholder="Invitation Date">
+         </div>
+          <div class="form-group">
+             <label for="adress">Adress</label>
+             <input type="text" ngModel="{{editUser?.adress}}" name="adress" class="form-control" id="adress" placeholder="Adress">
+          </div>
+          <div class="form-group">
+             <label for="phoneNumber">Phone Number</label>
+             <input type="number" ngModel="{{editUser?.phoneNumber}}" name="phoneNumber" class="form-control" id="phoneNumber" placeholder="Phone number">
+          </div>
+          <div class="form-group">
+            <label for="invitationStatus">Invitation Status</label>
+            <input type="text" ngModel="{{editUser?.invitationStatus}}" name="invitationStatus" class="form-control" id="invitationStatus" placeholder="Invitation Status">
+         </div>
+          <div class="modal-footer">
+             <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Close</button>
+             <button (click)="onUpdateUser(editForm.value)" data-dismiss="modal" class="btn btn-primary" >Save changes</button>
+          </div>
+       </form>
+       </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add Modal -->
+<div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="addUserModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+       <div class="modal-header">
+          <h5 class="modal-title" id="addUserModalLabel">Add User</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          </button>
+       </div>
+       <div class="modal-body">
+          <form #addForm="ngForm" (ngSubmit)="onAddUser(addForm)">
+          <div class="form-group">
+             <label for="firstName">First Name</label>
+             <input type="text" ngModel name="firstName" class="form-control" id="firstName" placeholder="First Name" required>
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" ngModel name="lastName" class="form-control" id="lastName" placeholder="Last Name" required>
+          </div>
+          <div class="form-group">
+             <label for="email">Email Address</label>
+             <input type="email" ngModel name="email" class="form-control" id="email" placeholder="Email" required>
+          </div>
+          <div class="form-group">
+            <label for="invitationDate">Invitation Date</label>
+            <input type="date" ngModel name="invitationDate" class="form-control" id="invitationDate" placeholder="Invitation Date" required>
+          </div>
+          <div class="form-group">
+            <label for="adress">Address</label>
+            <input type="text" ngModel name="adress" class="form-control" id="adress" placeholder="Adress" required>
+          </div>
+          <div class="form-group">
+             <label for="phoneNumber">Phone number</label>
+             <input type="number" ngModel name="phoneNumber" class="form-control" id="phoneNumber" placeholder="Phone number" required>
+          </div>
+          <div class="modal-footer">
+             <button type="button" id="add-user-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
+             <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary" >Save changes</button>
+          </div>
+          </form>
+       </div>
+    </div>
+  </div>
+</div>
+
+<!-- Delete Modal -->
+<div class="modal fade" id="deleteUserModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+     <div class="modal-content">
+        <div class="modal-header">
+           <h5 class="modal-title" id="deleteModelLabel">Delete User</h5>
+           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+           </button>
+        </div>
+        <div class="modal-body">
+           <p>Are you sure you want to delete this user {{deleteUser?.firstName}}?</p>
+           <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+              <button (click)="onDeleteUser(deleteUser?.id)" class="btn btn-danger" data-dismiss="modal">Yes</button>
+           </div>
+        </div>
+     </div>
+  </div>
+</div>
+

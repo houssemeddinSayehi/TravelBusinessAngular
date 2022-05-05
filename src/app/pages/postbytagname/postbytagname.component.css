@@ -1,0 +1,19 @@
+.tags{
+    background-color: rgb(0, 72, 120);
+    position: relative;
+    }
+
+    .tg{
+        
+        position: relative;
+        left: 85%;
+        }
+    
+        .nav-link {
+            cursor:pointer;
+          }
+          
+          .tag-pill{
+            cursor:pointer;
+          }
+          

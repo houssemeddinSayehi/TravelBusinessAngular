@@ -1,0 +1,41 @@
+<header class="main-header clearfix" role="header">
+    <div class="logo">
+      <a href="#"><em>business</em> and travel </a>
+    </div>
+    <a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
+    <nav id="menu" class="main-nav" role="navigation">
+      <ul class="main-menu">
+        <li><a href="#section1">Home</a></li>
+        <li class="has-submenu"><a href="#section2">About Us</a>
+          <ul class="sub-menu">
+            <li><a href="#section2">Who we are?</a></li>
+            <li><a href="#section3">What we do?</a></li>
+            <li><a href="#section3">How it works?</a></li>
+            <li><a class="nav-link"
+              [routerLink]="['/profile', currentUser.username]"
+              routerLinkActive="active">
+              <img [src]="currentUser.image" *ngIf="currentUser.image" class="user-pic" />
+              {{ currentUser.username }}profile</a></li>
+          </ul>
+        </li>
+
+        
+        <li><a   routerLink="/chat"
+          routerLinkActive="active">chat</a></li>
+          <li><a   routerLink="/postdememetag"
+            routerLinkActive="active">post with the same tag</a></li>
+            <li><a    routerLink="/editor"
+              routerLinkActive="active"> add article</a></li>
+          
+        <!-- <li><a href="#section5">Video</a></li> -->
+        <li><a  class="nav-link"
+          routerLink="/user"
+          routerLinkActive="active">acceuil</a></li>
+        <li><a class="nav-link"
+          [routerLink]="['/profile', currentUser.username]"
+          routerLinkActive="active">
+          {{ currentUser.username }} </a></li>
+      </ul>
+    
+    </nav>
+  </header>

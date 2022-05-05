@@ -1,0 +1,46 @@
+
+<section class='tabs-content'>
+    <article id='tabs-1'  *ngFor="let p of listPost  ">
+      <div class="row">
+        <div class="col-md-6">
+          <img src="{{p.fileName}}"/>                  </div>
+        <div class="col-md-6">
+          <h4>{{p.description}}</h4>   
+          <h4>{{p.dateDePublication}}</h4>   
+          <h4>{{p.sujet}}</h4>   
+          <p>{{p.nbrlike}}</p>
+          <div class="row">
+            <div class="col-md-10">
+                <button (click)="triste(p.id_Post,1)"  class="btn btn-outline-primary " type="button">triste</button>
+                <button (click)="jaime(p.id_Post,1)" class="btn btn-outline-primary" type="button">aime </button>
+                <button (click)="facher(p.id_Post,1)" class="btn btn-outline-primary" type="button">
+                    <i class="now-ui-icons ui-2_favourite-28"></i> facher
+                </button>
+                <button (click)="reacter(p.id_Post,1)" class="btn btn-outline-primary" type="button">
+                    <i class="now-ui-icons ui-2_favourite-28">adore</i>
+                </button>
+            </div>
+        
+           
+        </div>
+        <div class="listcomment">
+          <app-comment [co]="p.id_Post"></app-comment>
+        </div>
+        <div class="col-md-6">
+          <h4>commentaire</h4>
+         
+             
+                  <input name="commnetaire" [(ngModel)]="com" type="text" id="email_address_2" class="form-control"  placeholder="commentaire">
+                  <button  (click)="commnenter(p.id_Post,1,com)"  class="btn btn-primary" type="button">commenter</button>
+                 
+                  
+              
+        
+      </div>
+        </div>
+
+      
+      </div>
+    </article>
+ 
+  </section>
