@@ -21,7 +21,10 @@ import { ChatComponent } from 'src/app/pages/chat/chat.component';
 import { Footer1Component, Header1Component, SharedModule } from 'src/app/shared';
 // import { ToastrModule } from 'ngx-toastr';
 import {NgxPaginationModule} from 'ngx-pagination';
+<<<<<<< HEAD
 import { postbytagnameComponent } from 'src/app/pages/postbytagname/postbytagname.component';
+=======
+>>>>>>> 20b1c640b891393d1088c9309b700e8d5febdc5a
 @NgModule({
   imports: [
     CommonModule,
@@ -42,9 +45,12 @@ import { postbytagnameComponent } from 'src/app/pages/postbytagname/postbytagnam
     MapsComponent,
  
     MissionComponent,
+<<<<<<< HEAD
 
 
     postbytagnameComponent
+=======
+>>>>>>> 20b1c640b891393d1088c9309b700e8d5febdc5a
     
   ]
 })

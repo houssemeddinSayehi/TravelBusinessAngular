@@ -22,8 +22,11 @@ import { NgxStarRatingModule } from 'ngx-star-rating';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from 'src/app/app.routing';
 import { postbytagComponent } from 'src/app/pages/postbytag/postbytag.component';
+<<<<<<< HEAD
 import { postbytagnameComponent } from 'src/app/pages/postbytagname/postbytagname.component';
 import { commentComponent } from 'src/app/pages/commentComponent/comment.component';
+=======
+>>>>>>> 20b1c640b891393d1088c9309b700e8d5febdc5a
 
 // import { ToastrModule } from 'ngx-toastr';
 
@@ -39,7 +42,10 @@ import { commentComponent } from 'src/app/pages/commentComponent/comment.compone
     ClipboardModule
   ],
   declarations: [
+<<<<<<< HEAD
      
+=======
+>>>>>>> 20b1c640b891393d1088c9309b700e8d5febdc5a
     postbytagComponent
 
    

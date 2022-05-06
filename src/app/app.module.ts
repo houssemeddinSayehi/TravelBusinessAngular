@@ -43,7 +43,10 @@ import { TagComponent } from './pages/tag/tag.component';
 import { postComponent } from './pages/post/post.component';
 import { DictionnaireDesmotsInterditComponent } from './pages/dictionnaire-desmots-interdit/dictionnaire-desmots-interdit.component';
 import { postbytagnameComponent } from './pages/postbytagname/postbytagname.component';
+<<<<<<< HEAD
 import { commentComponent } from './pages/commentComponent/comment.component';
+=======
+>>>>>>> 20b1c640b891393d1088c9309b700e8d5febdc5a
 @NgModule({
   imports: [
     CoreModule,
@@ -72,13 +75,20 @@ import { commentComponent } from './pages/commentComponent/comment.component';
     Footer1Component,
     AppComponent,
     ChatComponent,
+<<<<<<< HEAD
     commentComponent,
+=======
+>>>>>>> 20b1c640b891393d1088c9309b700e8d5febdc5a
     AdminLayoutComponent,
     AuthLayoutComponent,
     userLayoutComponent,
     TagComponent,
     postComponent,
+<<<<<<< HEAD
    
+=======
+   postbytagnameComponent,
+>>>>>>> 20b1c640b891393d1088c9309b700e8d5febdc5a
     DictionnaireDesmotsInterditComponent
 >>>>>>> Stashed changes
   ],

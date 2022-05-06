@@ -15,7 +15,10 @@ const routes: Routes =[
 
  
 
+<<<<<<< HEAD
   
+=======
+>>>>>>> 20b1c640b891393d1088c9309b700e8d5febdc5a
   {
     path: 'settings',
     loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule)

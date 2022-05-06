@@ -24,13 +24,18 @@ import {NgxPaginationModule} from 'ngx-pagination';
   styleUrls: ['./comment.component.scss']
 })
 export class commentComponent implements OnInit {
+<<<<<<< HEAD
   @Input() c:number;
+=======
+  @Input() co:number;
+>>>>>>> 20b1c640b891393d1088c9309b700e8d5febdc5a
   listCommentaire: string[];
 
   constructor(private _service:PostService,private _router:Router) {
   
    }
   
+<<<<<<< HEAD
    afficher(c:number)
    {
     this._service.getcomment(c).subscribe(res=>{console.log(res); 
@@ -39,5 +44,14 @@ export class commentComponent implements OnInit {
      
   ngOnInit(): void {
     this.afficher(this.c);
+=======
+   afficher(co:number)
+   {
+     this._service.getcomment(co).subscribe(res=>{console.log(res); 
+       this.listCommentaire=res});
+     }
+  ngOnInit(): void {
+    this.afficher(this.co);
+>>>>>>> 20b1c640b891393d1088c9309b700e8d5febdc5a
 }
 }
