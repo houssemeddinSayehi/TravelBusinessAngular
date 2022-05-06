@@ -3,7 +3,13 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+<<<<<<< Updated upstream
   production: false
+=======
+  production: false,
+  apiBaseUrl: 'http://localhost:8085/business_travel',
+  api_url: 'https://conduit.productionready.io/api'
+>>>>>>> Stashed changes
 };
 
 /*

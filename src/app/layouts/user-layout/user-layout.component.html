@@ -1,0 +1,398 @@
+<!-- Sidenav -->
+
+  <!-- Top navbar -->
+  <app-navbar-user></app-navbar-user>
+
+<body>
+
+   
+  
+  <!-- ***** Main Banner Area Start ***** -->
+ <section class="section main-banner" id="top" data-section="section1">
+      <video autoplay muted loop id="bg-video">
+          <source src="assets/images/course-video.mp4" type="video/mp4" />
+      </video>
+
+      <div class="video-overlay header-text">
+          <div class="caption">
+              <h6>Graduate School of Management</h6>
+              <h2><em>Business</em> travel</h2>
+              <div class="main-button">
+                  <div class="scroll-to-section"><a href="#section2">Discover more</a></div>
+              </div>
+          </div>
+      </div>
+  </section>
+  <!-- ***** Main Banner Area End ***** -->
+
+
+  <section class="features">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-12">
+          <div class="features-post">
+            <div class="features-content">
+              <div class="content-show">
+                <h4><i class="fa fa-pencil"></i>All Courses</h4>
+              </div>
+              <div class="content-hide">
+                <p>Curabitur id eros vehicula, tincidunt libero eu, lobortis mi. In mollis eros a posuere imperdiet. Donec maximus elementum ex. Cras convallis ex rhoncus, laoreet libero eu, vehicula libero.</p>
+                <p class="hidden-sm">Curabitur id eros vehicula, tincidunt libero eu, lobortis mi. In mollis eros a posuere imperdiet.</p>
+                <div class="scroll-to-section"><a href="#section2">More Info.</a></div>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-12">
+          <div class="features-post second-features">
+            <div class="features-content">
+              <div class="content-show">
+                <h4><i class="fa fa-graduation-cap"></i>Virtual Class</h4>
+              </div>
+              <div class="content-hide">
+                <p>Curabitur id eros vehicula, tincidunt libero eu, lobortis mi. In mollis eros a posuere imperdiet. Donec maximus elementum ex. Cras convallis ex rhoncus, laoreet libero eu, vehicula libero.</p>
+                <p class="hidden-sm">Curabitur id eros vehicula, tincidunt libero eu, lobortis mi. In mollis eros a posuere imperdiet.</p>
+                <div class="scroll-to-section"><a href="#section3">Details</a></div>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-12">
+          <div class="features-post third-features">
+            <div class="features-content">
+              <div class="content-show">
+                <ul class="navbar-nav">
+           
+              </ul>
+              </div>
+              <div class="content-hide">
+                <p>Curabitur id eros vehicula, tincidunt libero eu, lobortis mi. In mollis eros a posuere imperdiet. Donec maximus elementum ex. Cras convallis ex rhoncus, laoreet libero eu, vehicula libero.</p>
+                <p class="hidden-sm">Curabitur id eros vehicula, tincidunt libero eu, lobortis mi. In mollis eros a posuere imperdiet.</p>
+                <div class="scroll-to-section"><a href="#section4">Read More</a></div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sectio" data-section="section2">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-heading">
+            <h2>Why choose Grad School?</h2>
+          </div>
+           <div class="col-md-12">
+          <div id='tabs'>
+            
+            <ul>
+              <li *ngFor="let t of tagg" class="nav-item">
+                <a routerLinkActive="active"  class="btn btn-light" (click)="afficher(t.description)" >
+                    
+                   {{t.description}}
+                </a>
+            </li>
+             
+            </ul>
+            <section class='tabs-content'>
+              <article id='tabs-1'  *ngFor="let p of listPost  | paginate: { itemsPerPage: 10, currentPage: p }">
+                <div class="row">
+                  <div class="col-md-6">
+                    <img src="{{p.fileName}}"/>                  </div>
+                  <div class="col-md-6">
+                    <h4>{{p.description}}</h4>   
+                    <h4>{{p.dateDePublication}}</h4>   
+                    <h4>{{p.sujet}}</h4>   
+                    <p>{{p.nbrlike}}</p>
+                    <div class="row">
+                      <div class="col-md-10">
+                          <button (click)="triste(p.id_Post,1)"  class="btn btn-outline-primary " type="button">triste</button>
+                          <button (click)="jaime(p.id_Post,1)" class="btn btn-outline-primary" type="button">aime </button>
+                          <button (click)="facher(p.id_Post,1)" class="btn btn-outline-primary" type="button">
+                              <i class="now-ui-icons ui-2_favourite-28"></i> facher
+                          </button>
+                          <button (click)="reacter(p.id_Post,1)" class="btn btn-outline-primary" type="button">
+                              <i class="now-ui-icons ui-2_favourite-28">adore</i>
+                          </button>
+                        
+                      </div>
+                       
+                     
+                  </div>
+                  <div class="listcomment">
+                    <app-comment [c]="p.id_Post"></app-comment>
+                  </div>
+                  <div class="col-md-6">
+                    <h4>commentaire</h4>
+                   
+                       
+                            <input name="commnetaire" [(ngModel)]="com" type="text" id="email_address_2" class="form-control"  placeholder="commentaire">
+                            <button  (click)="commnenter(p.id_Post,1,com)"  class="btn btn-primary" type="button">commenter</button>
+                           
+                            
+                        
+                  
+                </div>
+                  </div>
+
+                
+                </div>
+              </article>
+           
+            </section>
+          </div>
+        </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <section class="section coming-soon" data-section="section3">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7 col-xs-12">
+          <div class="continer centerIt">
+            <div>
+              <h4>Take <em>any online course</em> and win $326 for your next class</h4>
+              <div class="counter">
+
+                <div class="days">
+                  <div class="value">00</div>
+                  <span>Days</span>
+                </div>
+
+                <div class="hours">
+                  <div class="value">00</div>
+                  <span>Hours</span>
+                </div>
+
+                <div class="minutes">
+                  <div class="value">00</div>
+                  <span>Minutes</span>
+                </div>
+
+                
+                <div class="seconds">
+                  <div class="value">00</div>
+                  <span>Seconds</span>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="right-content">
+            <div class="top-content">
+              <h6>Register your free account and <em>get immediate</em> access to online courses</h6>
+            </div>
+            <form id="contact" action="" method="get">
+              <div class="row">
+                <div class="col-md-12">
+                  <fieldset>
+                    <input name="description " [(ngModel)]="post.description" type="text" id="first_name" class="form-control" placeholder="description">               
+                  </fieldset>
+                </div>
+                <div class="col-md-12">
+                  <fieldset>
+                    <input name="email" [(ngModel)]="post.sujet" type="text" id="email_address_2" class="form-control"  placeholder="sujet">
+                  </fieldset>
+                </div>
+                <div class="col-md-12">
+                  <fieldset>
+                    <input type="file" name="image" accept="image/png, image/jpeg" (change)="onSelectFile($event)" />
+                  </fieldset>
+                </div>
+                <div class="col-md-12">
+                  <fieldset>
+                    <input name="user" [(ngModel)]="id" type="text" id="email_address_2" class="form-control" placeholder="user">
+                  </fieldset>
+                </div>
+                <div class="col-md-12">
+                  <fieldset>
+                    <input name="tag" [(ngModel)]="idTag" type="text" id="tag" class="form-control" placeholder="tag">
+                  </fieldset>
+                </div>
+                <div class="col-md-12">
+                  <fieldset>
+                    <button (click)="addpost1(id,idTag)" type="submit" id="form-submit" class="button">Get it now</button>
+                  </fieldset>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section courses" data-section="section4">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-heading">
+            <h2>Choose Your Course</h2>
+          </div>
+        </div>
+        <div class="owl-carousel owl-theme">
+          <div class="item">
+            <img src="assets/images/courses-01.jpg" alt="Course #1">
+            <div class="down-content">
+              <h4>Digital Marketing</h4>
+              <p>You can get free images and videos for your websites by visiting Unsplash, Pixabay, and Pexels.</p>
+              <div class="author-image">
+                <img src="assets/images/author-01.png" alt="Author 1">
+              </div>
+              <div class="text-button-pay">
+                <a href="#">Pay <i class="fa fa-angle-double-right"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <img src="assets/images/courses-02.jpg" alt="Course #2">
+            <div class="down-content">
+              <h4>Business World</h4>
+              <p>Quisque cursus augue ut velit dictum, quis volutpat enim blandit. Maecenas a lectus ac ipsum porta.</p>
+              <div class="author-image">
+                <img src="assets/images/author-02.png" alt="Author 2">
+              </div>
+              <div class="text-button-free">
+                <a href="#">Free <i class="fa fa-angle-double-right"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <img src="assets/images/courses-03.jpg" alt="Course #3">
+            <div class="down-content">
+              <h4>Media Technology</h4>
+              <p>Pellentesque ultricies diam magna, auctor cursus lectus pretium nec. Maecenas finibus lobortis enim.</p>
+              <div class="author-image">
+                <img src="assets/images/author-03.png" alt="Author 3">
+              </div>
+              <div class="text-button-pay">
+                <a href="#">Pay <i class="fa fa-angle-double-right"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <img src="assets/images/courses-04.jpg" alt="Course #4">
+            <div class="down-content">
+              <h4>Communications</h4>
+              <p>Download free images and videos for your websites by visiting Unsplash, Pixabay, and Pexels.</p>
+              <div class="author-image">
+                <img src="assets/images/author-04.png" alt="Author 4">
+              </div>
+              <div class="text-button-free">
+                <a href="#">Free <i class="fa fa-angle-double-right"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <img src="assets/images/courses-05.jpg" alt="">
+            <div class="down-content">
+              <h4>Business Ethics</h4>
+              <p>Pellentesque ultricies diam magna, auctor cursus lectus pretium nec. Maecenas finibus lobortis enim.</p>
+              <div class="author-image">
+                <img src="assets/images/author-05.png" alt="">
+              </div>
+              <div class="text-button-pay">
+                <a href="#">Pay <i class="fa fa-angle-double-right"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <img src="assets/images/courses-01.jpg" alt="">
+            <div class="down-content">
+              <h4>Photography</h4>
+              <p>Quisque cursus augue ut velit dictum, quis volutpat enim blandit. Maecenas a lectus ac ipsum porta.</p>
+              <div class="author-image">
+                <img src="assets/images/author-01.png" alt="">
+              </div>
+              <div class="text-button-free">
+                <a href="#">Free <i class="fa fa-angle-double-right"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <img src="assets/images/courses-02.jpg" alt="">
+            <div class="down-content">
+              <h4>Web Development</h4>
+              <p>Pellentesque ultricies diam magna, auctor cursus lectus pretium nec. Maecenas finibus lobortis enim.</p>
+              <div class="author-image">
+                <img src="assets/images/author-02.png" alt="">
+              </div>
+              <div class="text-button-free">
+                <a href="#">Free <i class="fa fa-angle-double-right"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <img src="assets/images/courses-03.jpg" alt="">
+            <div class="down-content">
+              <h4>Learn HTML CSS</h4>
+              <p>You can get free images and videos for your websites by visiting Unsplash, Pixabay, and Pexels.</p>
+              <div class="author-image">
+                <img src="assets/images/author-03.png" alt="">
+              </div>
+              <div class="text-button-pay">
+                <a href="#">Pay <i class="fa fa-angle-double-right"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <img src="assets/images/courses-04.jpg" alt="">
+            <div class="down-content">
+              <h4>Social Media</h4>
+              <p>Pellentesque ultricies diam magna, auctor cursus lectus pretium nec. Maecenas finibus lobortis enim.</p>
+              <div class="author-image">
+                <img src="assets/images/author-04.png" alt="">
+              </div>
+              <div class="text-button-pay">
+                <a href="#">Pay <i class="fa fa-angle-double-right"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <img src="assets/images/courses-05.jpg" alt="">
+            <div class="down-content">
+              <h4>Digital Arts</h4>
+              <p>Quisque cursus augue ut velit dictum, quis volutpat enim blandit. Maecenas a lectus ac ipsum porta.</p>
+              <div class="author-image">
+                <img src="assets/images/author-05.png" alt="">
+              </div>
+              <div class="text-button-free">
+                <a href="#">Free <i class="fa fa-angle-double-right"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <img src="assets/images/courses-01.jpg" alt="">
+            <div class="down-content">
+              <h4>Media Streaming</h4>
+              <p>Pellentesque ultricies diam magna, auctor cursus lectus pretium nec. Maecenas finibus lobortis enim.</p>
+              <div class="author-image">
+                <img src="assets/images/author-01.png" alt="">
+              </div>
+              <div class="text-button-pay">
+                <a href="#">Pay <i class="fa fa-angle-double-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+
+
+
+
+</body>
+  
+  <br><br><br><br>
+
+  <simple-notifications></simple-notifications>'

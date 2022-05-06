@@ -1,0 +1,132 @@
+<div class="main-content">
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+      <div class="header-body">
+        <!-- Card stats -->
+      </div>
+    </div>
+  </div>
+  <!-- Page content -->
+  <div class="container-fluid mt--7" id="main-container">
+    <!-- Table -->
+    <div class="row">
+      <div class="col">
+        <div class="card shadow">
+          <div class="card-header border-0">
+            <a (click)="onOpenModal1(null, 'add')" class="btn btn-info test"> Add tag</a>
+            <h3 class="mb-0">List of tag</h3>
+          </div>
+          <div class="table-responsive">
+            <table class="table align-items-center table-flush">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">description</th>
+                
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Company -->
+                <tr *ngFor="let t of tagg">
+                  <th scope="row">
+                    <div class="media align-items-center">
+                      <div class="media-body">
+                        <span class="mb-0 text-sm"> {{t.description}}</span>
+                      </div>
+                    </div>
+                  </th>
+                 
+               
+                
+                
+                
+                
+                  
+                
+                  
+                  <td class="text-right">
+                    <div ngbDropdown placement="bottom-right">
+                      <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
+                        <i class="fas fa-ellipsis-v"></i>
+                      </a>
+                      <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
+                        <a (click)="onOpenModal1(t, 'edit')" class="dropdown-item" href="javascript:void(0)">Edit</a>
+                        <a (click)="onOpenModal1(t, 'delete')" class="dropdown-item" href="javascript:void(0)">Delete</a>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+   
+  </div>
+  
+  <!-- Edit Modal Mission -->
+  
+  
+  
+  <!-- Add Modal Mission -->
+  <div class="modal fade" id="addMissionModal" tabindex="-1" role="dialog" aria-labelledby="addMissionModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title" id="addMissionModalLabel">Add tag</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <div class="modal-body">
+            <form #addForm="ngForm" (ngSubmit)="addtag()">
+            <div class="form-group">
+               <label for="destination">description</label>
+               <input name="description " [(ngModel)]="tag.description" type="text" id="first_name" class="form-control" placeholder="description">               
+              </div>
+              <div class="modal-footer">
+                <button type="button" id="add-mission-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary" >Save changes</button>
+             </div>
+            </form>
+         </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Delete Modal Mission-->
+  <div class="modal fade" id="deleteMissionModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+       <div class="modal-content">
+          <div class="modal-header">
+             <h5 class="modal-title" id="deleteModelLabel">Delete Mission</h5>
+             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+             </button>
+          </div>
+          <div class="modal-body">
+             <p>Are you sure you want to delete this mission : {{tag?.id_Tag}}?</p>
+             <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                <button (click)="onDeletepost(tag?.id_Tag)" class="btn btn-danger" data-dismiss="modal">Yes</button>
+             </div>
+          </div>
+       </div>
+    </div>
+  </div>
+  
+
+  </div>
+  
+ 
+  <!-- Edit Modal Mission Affectation -->
+  
+  
+  
+  
+  
+  <app-sidebar></app-sidebar>
+
+
+
