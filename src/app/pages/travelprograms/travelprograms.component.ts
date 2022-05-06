@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TravelProgramService } from '../../services/TravelProgramService'
-import { User } from '../../interfaces/User'
+import { TravelProgramService } from '../../services/TravelProgramService';
 import { HttpErrorResponse } from '@angular/common/http';
 import { TravelProgram } from 'src/app/interfaces/TravelProgram';
 
@@ -31,6 +30,21 @@ export class TravelProgramComponent implements OnInit {
         console.log('complete');
         }
     });
+  }
+
+  public validateTravelPrograms(): void {
+    this.travelProgramService.getAllValidatedTravelPrograms().subscribe({
+      next: (response: TravelProgram[]) => {
+        this.travelPrograms = response;
+        console.log(response);
+      },
+      error: (error: HttpErrorResponse) => {
+        alert(error.message);
+      },
+      complete: () => {
+        console.log('complete');
+      }
+    })
   }
 
 }

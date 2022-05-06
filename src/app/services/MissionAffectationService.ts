@@ -14,15 +14,15 @@ export class MissionAffectationService {
     return this.http.get<MissionAffectation[]>(`${this.apiServerUrl}/missionAffectation/all`);
   }
 
-  public addMission(missionAffectation: MissionAffectation): Observable<MissionAffectation> {
+  public addMissionAffectation(missionAffectation: MissionAffectation): Observable<MissionAffectation> {
     return this.http.post<MissionAffectation>(`${this.apiServerUrl}/missionAffectation/add`, missionAffectation);
   }
 
-  public updateMission(missionAffectation   : MissionAffectation): Observable<MissionAffectation> {
+  public updateMissionAffectation(missionAffectation   : MissionAffectation): Observable<MissionAffectation> {
     return this.http.put<MissionAffectation>(`${this.apiServerUrl}/missionAffectation/update`, missionAffectation);
   }
 
-  public deleteMission(missionAffectationId: number): Observable<void> {
+  public deleteMissionAffectation(missionAffectationId: number): Observable<void> {
     return this.http.delete<void>(`${this.apiServerUrl}/missionAffectation/delete/${missionAffectationId}`);
   }
 

@@ -24,6 +24,6 @@ export class UserService {
   }
 
   public deleteUser(userId: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiServerUrl}/employee/delete/${userId}`);
+    return this.http.delete<void>(`${this.apiServerUrl}/user/delete/${userId}`);
   }
 }
